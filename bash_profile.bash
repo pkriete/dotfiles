@@ -47,6 +47,7 @@ complete -o default -o nospace -F _git g
 # Disable case sensitive autocomplete, fix bell behavior, and slash symlink dirs
 bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
+bind 'set mark-directories on'
 bind 'set mark-symlinked-directories on'
 
 
@@ -175,7 +176,7 @@ running()
 __()
 {
 	local cur="${COMP_WORDS[COMP_CWORD]}"
-	COMPREPLY=( $(compgen -G "${DEV_PATH}/${cur}*" | xargs ls -Fd | sed -e "s|${DEV_PATH}/||") )
+	COMPREPLY=( $(compgen -G "${DEV_PATH}/${cur}*" | xargs ls -Fd | sed -e "s|${DEV_PATH}/||" | sed -e "s|@$|/|") )
 }
 
 complete -o nospace -o filenames -F __ _
