@@ -12,7 +12,7 @@
 	name = Pascal Kriete
 	email = pascal@pascalkriete.com
 [push]
-	default = tracking
+	default = upstream
 [credential]
 	helper = osxkeychain
 [alias]
