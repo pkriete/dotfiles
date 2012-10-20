@@ -1,0 +1,68 @@
+[core]
+	editor = subl -w
+	excludesfile = "/Users/pascal/.gitignore"
+	autocrlf = input
+	quotepath = false
+[branch]
+	autosetupmerge = true
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[user]
+	name = Pascal Kriete
+	email = pascal@pascalkriete.com
+[push]
+	default = tracking
+[credential]
+	helper = osxkeychain
+[alias]
+	a = add
+	b = branch
+	c = commit -s
+	h = help
+	l = log --oneline --decorate --no-merges
+	r = rebase
+	s = status --short --branch
+
+	co = checkout
+	cm = commit -s -m
+	pl = pull
+	plr = pull --rebase
+	ps = push
+	dt = difftool
+	ri = rebase -i
+
+	ca = commit --amend
+	cah = commit --amend -c HEAD
+
+	lh = log --oneline --decorate -n1
+	lg = log --oneline --graph --decorate
+
+	ltd = log --oneline --decorate --no-merges --since=midnight
+	lyd = log --oneline --decorate --no-merges --since=yesterday
+
+	# again, but with merges
+	lmtd = log --oneline --decorate --since=midnight
+	lmyd = log --oneline --decorate --since=yesterday
+
+	undo = reset --soft HEAD^
+	unstage = reset HEAD
+	discard = checkout --
+	who = shortlog -s -n --no-merges
+[color]
+	ui = auto
+	status = auto
+	branch = auto
+	diff = auto
+[advice]
+	statusHints = false
+[help]
+	autocorrect = 0
+[diff]
+	tool = Kaleidoscope
+[mergetool]
+	keepBackup = true
+[difftool]
+	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
