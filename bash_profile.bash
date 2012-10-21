@@ -77,7 +77,8 @@ finder()
 
 safari()
 {
-	if [ -t 0 ]; then
+	if [ -t 0 ];
+	then
 		open -a Safari $1
 	else
 		open -a Safari $(cat)
@@ -101,7 +102,8 @@ sniff()
 }
 
 # Create a data URL from a file
-dataurl() {
+dataurl()
+{
 	local mimeType=`file -b --mime-type "$1"`
 
 	if [[ $mimeType == text/* ]];
@@ -125,7 +127,8 @@ gw()
 	url=`echo $url | sed -e "s|\(github.com\):\(.*\)|\\1/\\2/commit|"`
 	url=`echo $url | sed -e "s|\(.*beanstalk.com\):\(.*\)|\\1/\\2/changeset|"`
 
-	if [ -t 0 ]; then
+	if [ -t 0 ];
+	then
 		echo "${url}/$1"
 	else
 		echo "${url}/$(cat)" # $(cat) instead of read so it can be used without input
