@@ -44,6 +44,9 @@ complete -o default -F _brew b
 complete -o default -o nospace -F _git g
 
 
+# Don't log out on ctrl+D
+set -o ignoreeof
+
 # Disable case sensitive autocomplete, fix bell behavior, and slash symlink dirs
 bind 'set completion-ignore-case on'
 bind 'set show-all-if-ambiguous on'
