@@ -18,14 +18,14 @@
 [alias]
 	a = add
 	b = branch
-	c = commit -s
+	c = commit
 	h = help
 	l = log --oneline --decorate --no-merges
 	r = rebase
 	s = status --short --branch
 
 	co = checkout
-	cm = commit -s -m
+	cm = commit -m
 	pl = pull
 	plr = pull --rebase
 	ps = push
