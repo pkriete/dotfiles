@@ -59,7 +59,11 @@ bind 'set mark-symlinked-directories on'
 # dev path helper (autocompleted below)
 _()
 {
-	cd ${DEV_PATH}/$1
+	case "$1" in
+		"-e") subl ${DEV_PATH}/$2;;
+		"-p") echo ${DEV_PATH}/$2;;
+		   *) cd ${DEV_PATH}/$1;;
+	esac
 }
 
 mcd()
