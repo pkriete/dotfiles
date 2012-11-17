@@ -3,12 +3,21 @@
 # Some homebrew basics
 brew install wget coreutils ngrep
 
+# Update gems (sudo?)
+gem update --system
+
+# Update rdoc and ri data
+# @todo ruby <= 1.9.1 && sudo?
+gem install rdoc rdoc-data
+rdoc-data --install
+
 # Symlink stuff into place
 cd ~
 ln -s .dotfiles/bash_profile.bash .bash_profile
 ln -s .dotfiles/gitconfig .gitconfig
 ln -s .dotfiles/gitignore .gitignore
 ln -s .dotfiles/hushlogin .hushlogin
+ln -s .dotfiles/gemrc .gemrc
 ln -s .dotfiles/dobby_config.rb .dobby_config
 
 ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
