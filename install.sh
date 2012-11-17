@@ -3,14 +3,6 @@
 # Some homebrew basics
 brew install wget coreutils ngrep
 
-# Update gems (sudo?)
-gem update --system
-
-# Update rdoc and ri data
-# @todo ruby <= 1.9.1 && sudo?
-gem install rdoc rdoc-data
-rdoc-data --install
-
 # Symlink stuff into place
 cd ~
 ln -s .dotfiles/bash_profile.bash .bash_profile
