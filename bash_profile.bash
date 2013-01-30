@@ -126,7 +126,7 @@ gw()
 {
 	local url
 
-	url=`git remote -v | pick 1 2`
+	url=`git remote -v | grep origin | pick 1 2`
 	url=`echo $url | sed -e "s|^git@|https://|"`
 	url=`echo $url | sed -e "s|.git$||"`
 
