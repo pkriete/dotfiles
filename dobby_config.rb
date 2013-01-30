@@ -123,6 +123,12 @@ config :php_xdebug => :php do |c|
   c.file = '/usr/local/etc/php/5.4/conf.d/ext-xdebug.ini'
 end
 
+# config :puppet do |c|
+#   c.name = 'Puppet'
+#   c.file = '/etc/puppet'
+#   c.file = '~/.puppet'
+# end
+
 config :vhosts => :apache do |c|
   c.name = 'Virtual Hosts'
   c.file = '/private/etc/apache2/extra/httpd-vhosts.conf'
