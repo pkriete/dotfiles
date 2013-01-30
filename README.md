@@ -17,3 +17,9 @@ Update ruby gems and ri data
 	gem update --system
 	gem install rdoc rdoc-data
 	rdoc-data --install
+
+Install BasicTeX and Packages
+
+ - http://tug.org/mactex/morepackages.html
+
+ 	sudo tlmgr install collection-latexextra
