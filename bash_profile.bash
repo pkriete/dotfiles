@@ -28,9 +28,11 @@ source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
 
 ## Exports
+PEAR_BIN=`pear config-get bin_dir`
+
 export PS1="# ${WHITE}[\$(running)]${RESET} \u${CYAN}\$(__git_ps1 \" (%s)\")${WHITE} \w${RESET} $\n"
 export EDITOR='subl -w'
-export PATH="/usr/local/bin:/usr/local/share/python:$PATH"
+export PATH="/usr/local/bin:/usr/local/share/python:$PEAR_BIN:$PATH"
 export HISTCONTROL=ignoreboth # ignorespace, ignoredups
 
 ## Aliases
@@ -61,6 +63,7 @@ _()
 {
 	case "$1" in
 		"-e") subl ${DEV_PATH}/$2;;
+		"-s") subl ${DEV_PATH}/$2;;
 		"-p") echo ${DEV_PATH}/$2;;
 		   *) cd ${DEV_PATH}/$1;;
 	esac
@@ -90,6 +93,13 @@ safari()
 	else
 		open -a Safari $(cat)
 	fi
+}
+
+# Watch sphinx and rebuild
+# HT http://jacobian.org/writing/auto-building-sphinx/
+watchdocs()
+{
+	watchmedo shell-command --patterns="*.rst" --ignore-pattern='_build/*' --recursive --command='make html'
 }
 
 # Sniff incoming traffic
@@ -162,6 +172,17 @@ pick()
 	done
 }
 
+# take a folder name and return an encrypted version of the same name
+encrypt()
+{
+	tar -zcf - $1 | openssl aes-256-cbc -salt -out "${1%/}.tar.gz.aes"
+}
+
+# decrypt folder encrypted with the above
+decrypt()
+{
+	openssl aes-256-cbc -d -salt -in $1 | tar -xz -f -
+}
 
 ## Utility
 
