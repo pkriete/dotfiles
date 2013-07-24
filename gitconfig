@@ -1,6 +1,6 @@
 [core]
 	editor = subl -w
-	excludesfile = "/Users/pascal/.gitignore"
+	excludesfile = "/Users/pkriete/.gitignore"
 	autocrlf = input
 	quotepath = false
 [branch]
@@ -49,6 +49,10 @@
 	unstage = reset HEAD
 	discard = checkout --
 	who = shortlog -s -n --no-merges
+
+	assume = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 [color]
 	ui = auto
 	status = auto
@@ -60,6 +64,7 @@
 	autocorrect = 0
 [diff]
 	tool = Kaleidoscope
+	algorithm = patience
 [mergetool]
 	keepBackup = true
 [difftool]

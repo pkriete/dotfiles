@@ -1,7 +1,19 @@
 #!/bin/bash
 
+print_step()
+{
+	echo -e "Step: \033[0;36m$1\033[0;37;00m"
+}
+
+
+
+print_step "Homebrew Dependencies"
+
 # Some homebrew basics
 brew install wget coreutils ngrep
+
+
+print_step "Symlink Config Files"
 
 # Symlink stuff into place
 cd ~
@@ -12,6 +24,9 @@ ln -s .dotfiles/hushlogin .hushlogin
 ln -s .dotfiles/gemrc .gemrc
 ln -s .dotfiles/dobby_config.rb .dobby_config
 
+
+print_step "Symlink Sublime Text 2 as subl"
+
 ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
 # And now make osx behave. Mostly from:
@@ -19,6 +34,8 @@ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl /usr/loca
 # https://github.com/holman/dotfiles/blob/master/osx/set-defaults.sh
 
 # General
+
+print_step "Set OS X Configuration"
 
 # Set a really fast key repeat.
 defaults write NSGlobalDomain KeyRepeat -int 0
@@ -121,6 +138,9 @@ defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+
+print_step "Restart Applications"
 
 for app in "Dashboard" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "Terminal" "iCal" "iTunes"; do
 	killall "$app" > /dev/null 2>&1
