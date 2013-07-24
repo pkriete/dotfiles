@@ -4,13 +4,19 @@ Inspired by the various dotfiles projects.
 
 ## Install
 
-First install xcode, cli tools, git, and homebrew. Then ...
+First install xcode, cli tools, git,  SublimeText 2, and homebrew. Then ...
 
 Clone into `~/.dotfiles` and run install.sh.
 
 ## Other Stuff
 
-Install SublimeText 2, open the packages folder and clone pkriete/emmet-sublime and pkriete/CurrentScope.
+Open the sublime text packages folder and clone pkriete/emmet-sublime and pkriete/CurrentScope.
+
+Install python and packages
+
+	brew install python
+	pip install sphinx watchdog boto
+
 
 Update ruby gems and ri data
 
