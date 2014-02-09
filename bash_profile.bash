@@ -25,14 +25,14 @@ source "${DEV_PATH}/ruby/dobby/etc/dobby-prompt.sh"
 source `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 source `brew --prefix`/etc/bash_completion.d/git-completion.bash
 source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-
+source "$HOME/.rvm/scripts/rvm"
 
 ## Exports
 PEAR_BIN=`pear config-get bin_dir`
 
 export PS1="# ${WHITE}[\$(running)]${RESET} \u${CYAN}\$(__git_ps1 \" (%s)\")${WHITE} \w${RESET} $\n"
 export EDITOR='subl -w'
-export PATH="/usr/local/bin:/usr/local/share/python:$PEAR_BIN:$PATH"
+export PATH="~/.composer/vendor/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/share/python:$PEAR_BIN:$PATH"
 export HISTCONTROL=ignoreboth # ignorespace, ignoredups
 
 ## Aliases
@@ -69,6 +69,16 @@ _()
 	esac
 }
 
+app()
+{
+	case "$#" in
+		0) echo "Usage: app <appname> [en|de|fr]";;
+		1) open -a $1;;
+		2) open -a $1 --args -AppleLanguages "($2)";;
+		*) ;;
+	esac
+}
+
 mcd()
 {
 	test -e $1 || mkdir -p $1; cd $1;
@@ -99,7 +109,7 @@ safari()
 # HT http://jacobian.org/writing/auto-building-sphinx/
 watchdocs()
 {
-	watchmedo shell-command --patterns="*.rst" --ignore-pattern='_build/*' --recursive --command='make html'
+	watchmedo shell-command --patterns="*.rst" --ignore-pattern='_build/*' --recursive --wait --command='make html'
 }
 
 # Sniff incoming traffic
@@ -211,3 +221,5 @@ __()
 }
 
 complete -o nospace -o filenames -F __ _
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

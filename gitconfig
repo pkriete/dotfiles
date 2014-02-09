@@ -71,3 +71,6 @@
 	prompt = false
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
