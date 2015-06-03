@@ -10,7 +10,7 @@
 	merge = refs/heads/master
 [user]
 	name = Pascal Kriete
-	email = pascal@pascalkriete.com
+	email = mail@pascal.io
 [push]
 	default = upstream
 [credential]
