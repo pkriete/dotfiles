@@ -1,5 +1,5 @@
 [core]
-	editor = subl -w
+	editor = atom -w
 	excludesfile = "/Users/pkriete/.gitignore"
 	autocrlf = input
 	quotepath = false
@@ -31,6 +31,7 @@
 	ps = push
 	dt = difftool
 	ri = rebase -i
+	sync = !git stash && git plr && git ps && git stash pop
 
 	ca = commit --amend
 	cah = commit --amend -c HEAD
@@ -72,5 +73,14 @@
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
